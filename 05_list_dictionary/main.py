@@ -1,13 +1,16 @@
-from pprint import pprint
+"""
+Author: Mohit Dhungana
+Assignment: Create a program to find the term frequency vector of a document
+            stored in a text file TheTortoiseAndTheHare.txt
+"""
 import re
 
-FOLDER_PATH = "05_list_dictionary/"
-SOURCE_FILE_NAME = "TheTortoiseAndTheHare.txt"
 
 term_frequency_vector = {}
 
 
-file = open(FOLDER_PATH + SOURCE_FILE_NAME, "r")
+file_name = input("Enter filename: ")
+file = open(file_name, "r")
 lines = file.readlines()
 
 
@@ -30,5 +33,14 @@ for each_line in lines:
             term_frequency_vector[clean_word] = 1
 
 
-pprint(term_frequency_vector)
+sorted_keys = sorted(list(term_frequency_vector.keys()))
+
+
+print(f"There are {len(sorted_keys)} unique terms")
+
+
+for key in sorted_keys:
+    print(f"{term_frequency_vector[key]} {key}")
+
+
 file.close()
